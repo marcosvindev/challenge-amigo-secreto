@@ -1,4 +1,4 @@
-# Olá, sejam bem vindos ao jogo do amigo secreto!
+# Olá, sejam bemq vindos ao jogo do amigo secreto!
 ![gif do jogo](ezgif.com-animated-gif-maker.gif)
 ## Para jogar o jogo é bem simples:
 
