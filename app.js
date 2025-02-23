@@ -1,50 +1,47 @@
-//Modo Copiado
 function textos(tag, texto) {
-    let campo = document.querySelector(tag, texto);
-    campo.innerHTML = texto;
-    
+    let campo = document.querySelector(tag);
+    if (campo) {
+        campo.innerHTML = texto;
+    }
 }
 
 textos("h1", "Sorteie um Amigo!");
-textos("h2", "Digite o nome dos seus amigos");
-
-//Modo Aprendido
-
-/*
-let boasVindas = document.querySelector("h1");
-boasVindas.innerHTML = "Hora de Jogar!";
-
-let campoSortear = document.querySelector("h2");
-campoSortear.innerHTML = "Quais amigos você gostaria de sortear?";
-*/
-
-// =====================================================
+     textos("h2", "Digite o nome dos seus amigos");
 
 let amigos = [];
 
 function adicionarAmigo() {
     let amigoAdicionado = document.querySelector("input").value.trim();
-    amigos.push(amigoAdicionado);
-     console.log(amigos);
+           if (amigoAdicionado === "") {
+               alert("Por favor, insira um nome.");
+                  return;}  
+                    amigos.push(amigoAdicionado);
+          
+                        document.querySelector("input").value = "";
+                            atualizarLista(); 
 
-    if (amigoAdicionado == "") {
-        return alert("Por favor, insira um nome.");
-        
-    }  else {
-    }
-    limparCampo();
 }
+
+function atualizarLista() {
+ let lista = document.getElementById("listaAmigos");
+    lista.innerHTML = ""; 
+
+      amigos.forEach(amigo => {
+         let item = document.createElement("li");
+              item.textContent = amigo;
+                  lista.appendChild(item);
+    });
+}
+
 
 function sortearAmigo() {
-    
-    let sorteador = Math.floor(Math.random() * amigos.length);
-    textos("h2", `O amigo sorteado foi ${amigos[sorteador]}!`);
+    if (amigos.length === 0) {
+        alert("Adicione um amigo, pelo menos.");
+         return; 
+      }
+             let sorteador = Math.floor(Math.random() * amigos.length);
 
-}
-
-function limparCampo() {
-
-amigoAdicionado = document.querySelector("Input");
-amigoAdicionado.value = "";
-    
+             textos("h2", `O amigo sorteado foi o: ${amigos[sorteador]}!`);
+                 
+   
 }
